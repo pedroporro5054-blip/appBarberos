@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Turno - Alexis Allendez</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/views/booking/styles.css">
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="background-pattern"></div>
+    
+    <!-- Booking Container -->
+    <div class="booking-container">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                    <!-- Logo Section -->
+                    <div class="text-center mb-5">
+                        <div class="logo-container">
+                            <i class="fas fa-calendar-check logo-icon"></i>
+                        </div>
+                        <h1 class="brand-title">ALEXIS ALLENDEZ</h1>
+                        <p class="brand-subtitle">Agenda tu Turno</p>
+                    </div>
+                    
+                    <!-- Booking Form -->
+                    <div class="booking-card">
+                        <div class="card-header text-center mb-4">
+                            <h2 class="booking-title">
+                                <i class="fas fa-calendar-plus me-2"></i>
+                                Reserva tu Cita
+                            </h2>
+                            <p class="booking-subtitle">Selecciona el servicio y horario que prefieras</p>
+                        </div>
+                        
+                        <form id="bookingForm" class="booking-form">
+                            <!-- Información Personal -->
+                            <div class="form-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-user me-2"></i>
+                                    Información Personal
+                                </h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-user"></i>
+                                                </span>
+                                                <input 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    id="nombre" 
+                                                    placeholder="Nombre"
+                                                    required
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-user"></i>
+                                                </span>
+                                                <input 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    id="apellido" 
+                                                    placeholder="Apellido"
+                                                    required
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </span>
+                                                <input 
+                                                    type="email" 
+                                                    class="form-control" 
+                                                    id="email" 
+                                                    placeholder="Correo electrónico"
+                                                    required
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-phone"></i>
+                                                </span>
+                                                <input 
+                                                    type="tel" 
+                                                    class="form-control" 
+                                                    id="telefono" 
+                                                    placeholder="Teléfono"
+                                                    required
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Selección de Barbero -->
+                            <div class="form-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-user-tie me-2"></i>
+                                    Selecciona tu Barbero
+                                </h4>
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fas fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-control" id="barbero" required>
+                                            <option value="">Cargando barberos...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Selección de Servicio -->
+                            <div class="form-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-concierge-bell me-2"></i>
+                                    Servicio
+                                </h4>
+                                
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fas fa-cut"></i>
+                                        </span>
+                                        <select class="form-control" id="servicio" required>
+                                            <option value="">Cargando servicios...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Información del servicio seleccionado -->
+                                <div id="serviceInfo" class="service-info-card" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <span class="info-label">⏱️ Duración:</span>
+                                                <span class="info-value" id="serviceDuration">-</span>
+                                            </div>
+                                            <div class="info-item">
+                                                <span class="info-label">👨‍💼 Profesional:</span>
+                                                <span class="info-value" id="serviceBarber">-</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <span class="info-label">🏪 Establecimiento:</span>
+                                                <span class="info-value" id="serviceBarberia">-</span>
+                                            </div>
+                                            <div class="info-item">
+                                                <span class="info-label">📝 Detalles:</span>
+                                                <span class="info-value" id="serviceDescription">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Selección de Fecha y Hora -->
+                            <div class="form-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-clock me-2"></i>
+                                    Fecha y Hora
+                                </h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-calendar"></i>
+                                                </span>
+                                                <input 
+                                                    type="date" 
+                                                    class="form-control" 
+                                                    id="fecha" 
+                                                    required
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <span class="input-icon">
+                                                    <i class="fas fa-clock"></i>
+                                                </span>
+                                                <select class="form-control" id="hora" required>
+                                                    <option value="">Cargando horarios...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comentarios Adicionales -->
+                            <div class="form-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-comment me-2"></i>
+                                    Comentarios (Opcional)
+                                </h4>
+                                
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                        <textarea 
+                                            class="form-control" 
+                                            id="comentarios" 
+                                            placeholder="Comentarios adicionales, preferencias especiales, etc."
+                                            rows="3"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Resumen de la Reserva -->
+                            <div class="booking-summary mb-4">
+                                <h4 class="section-title">
+                                    <i class="fas fa-receipt me-2"></i>
+                                    Resumen de la Reserva
+                                </h4>
+                                
+                                <div class="summary-card">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="summary-item">
+                                                <span class="summary-label">✂️ Servicio:</span>
+                                                <span class="summary-value" id="summaryServicio">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">👨‍💼 Profesional:</span>
+                                                <span class="summary-value" id="summaryBarbero">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">📅 Fecha:</span>
+                                                <span class="summary-value" id="summaryFecha">-</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="summary-item">
+                                                <span class="summary-label">🕐 Hora:</span>
+                                                <span class="summary-value" id="summaryHora">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">💰 Precio:</span>
+                                                <span class="summary-value" id="summaryPrecio">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">🏪 Establecimiento:</span>
+                                                <span class="summary-value" id="summaryBarberia">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Botón de Reserva -->
+                            <button type="submit" class="btn btn-booking w-100 mb-4">
+                                <i class="fas fa-calendar-check me-2"></i>
+                                Confirmar Reserva
+                            </button>
+                        </form>
+                        
+                        <!-- Enlaces de Navegación -->
+                        <div class="booking-links text-center mt-4">
+                            <p>¿Necesitas cancelar una cita? <a href="/cancel">Hazlo aquí</a></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Back to Home -->
+                    <div class="text-center mt-4">
+                        <a href="/" class="back-home">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Volver al inicio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Utils JS -->
+    <script src="/views/dashboard/utils.js"></script>
+    <!-- Custom JS -->
+    <script src="/views/booking/script.js"></script>
+</body>
+</html> 

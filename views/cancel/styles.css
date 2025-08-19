@@ -1,0 +1,356 @@
+/* Variables CSS - Consistentes con el diseño principal */
+:root {
+    --dark-bg: #0a0a0a;
+    --darker-bg: #050505;
+    --accent-color: #d4af37;
+    --accent-hover: #b8941f;
+    --text-light: #ffffff;
+    --text-gray: #a0a0a0;
+    --text-dark: #666666;
+    --border-color: #333333;
+    --card-bg: #111111;
+    --card-hover: #1a1a1a;
+    --overlay-bg: rgba(0, 0, 0, 0.8);
+    --gradient-primary: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+    --gradient-dark: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    --shadow-light: 0 10px 30px rgba(212, 175, 55, 0.2);
+    --shadow-dark: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+}
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Background Pattern */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(220, 53, 69, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 53, 69, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(220, 53, 69, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Cancel Container */
+.cancel-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+/* Logo Section */
+.logo-container {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-hover) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+.brand-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.brand-subtitle {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Cancel Card */
+.cancel-card {
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.cancel-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-hover) 100%);
+}
+
+.cancel-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.cancel-subtitle {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 300;
+}
+
+/* Form Styles */
+.cancel-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    z-index: 2;
+    color: var(--danger-color);
+    font-size: 1.1rem;
+}
+
+.form-control {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    padding: 1rem 1rem 1rem 3rem;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    width: 100%;
+}
+
+.form-control:focus {
+    background: rgba(26, 26, 26, 0.9);
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    color: var(--text-light);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--text-gray);
+    opacity: 0.7;
+}
+
+/* Button Styles */
+.btn-cancel {
+    background: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-hover) 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(220, 53, 69, 0.4);
+    color: var(--text-light);
+}
+
+.btn-cancel:active {
+    transform: translateY(0);
+}
+
+.btn-cancel.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-cancel.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--text-light);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Links */
+.cancel-links p {
+    margin-bottom: 0.5rem;
+    color: var(--text-gray);
+}
+
+.cancel-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.cancel-links a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+.back-home {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.back-home:hover {
+    color: var(--accent-color);
+    transform: translateX(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cancel-container {
+        padding: 1rem 0;
+    }
+    
+    .cancel-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .brand-title {
+        font-size: 1.5rem;
+    }
+    
+    .cancel-title {
+        font-size: 1.5rem;
+    }
+    
+    .logo-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cancel-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .brand-title {
+        font-size: 1.3rem;
+    }
+    
+    .cancel-title {
+        font-size: 1.3rem;
+    }
+    
+    .form-control {
+        font-size: 0.9rem;
+        padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    }
+    
+    .input-icon {
+        font-size: 1rem;
+        left: 0.8rem;
+    }
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--danger-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--danger-hover);
+}
+
+/* Animations */
+.cancel-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
